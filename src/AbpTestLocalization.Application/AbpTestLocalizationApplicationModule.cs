@@ -38,11 +38,11 @@ public class AbpTestLocalizationApplicationModule : AbpModule
             options.FileSets.AddEmbedded<AbpTestLocalizationApplicationModule>("AbpTestLocalization");
         });
 
-        Configure<AbpLocalizationOptions>(options =>
-        {
-            options.Resources
-                .Add<TemplatesResource>("en")
-                .AddVirtualJson("/TextTemplating/Localization/Resources");
-        });
+Configure<AbpLocalizationOptions>(options =>
+{
+    options.Resources
+        .Add<TemplatesResource>("en")
+        .AddVirtualJson("/TextTemplating/Localization/Resources");
+});
     }
 }

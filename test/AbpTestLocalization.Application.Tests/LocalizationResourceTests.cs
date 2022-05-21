@@ -10,26 +10,42 @@ namespace AbpTestLocalization;
 public class LocalizationResourceTests : AbpTestLocalizationApplicationTestBase
 {
     //this fails
-    [Fact]
-    public void should_get_text_in_AbpTestLocalizationResource()
-    {
-        var localizer = GetRequiredService<IStringLocalizer<TemplatesResource>>();
+[Fact]
+public void should_get_text_in_TemplatesResource()
+{
+    var localizer = GetRequiredService<IStringLocalizer<TemplatesResource>>();
 
 
-        string text = localizer[TemplatesResource.TestText];
+    string text = localizer[TemplatesResource.TestText];
 
-        text.ShouldBeEquivalentTo("A test text in another resource defined in some module");
-    }
+    text.ShouldBeEquivalentTo("A test text in another resource defined in some module");
+}
 
     //this passes
     [Fact]
-    public void should_get_text_in_TemplatesResource()
+    public void should_get_text_in_AbpTestLocalizationResource()
     {
         var localizer = GetRequiredService<IStringLocalizer<AbpTestLocalizationResource>>();
 
-        string text = localizer[AbpTestLocalizationResource.Test];
+        string text = localizer[AbpTestLocalizationResource.TestText];
 
         text.ShouldBeEquivalentTo("A test text in default localization resource");
+    }
+
+    //this fails
+    [Fact]
+    public void should_get_text_from_TestClassUsingLocalizedString()
+    {
+        var provider = GetRequiredService<TestClassUsingLocalizedString>();
+
+        string expectedText = "A test text in another resource defined in some module";
+        //a better way to get the expected text is:
+        //var localizer = GetRequiredService<IStringLocalizer<TemplatesResource>>();
+        //string expectedText = localizer[TemplatesResource.TestText];
+
+        string actualText = provider.GetText();
+
+        actualText.ShouldBeEquivalentTo(expectedText);
     }
 
     //this fails
