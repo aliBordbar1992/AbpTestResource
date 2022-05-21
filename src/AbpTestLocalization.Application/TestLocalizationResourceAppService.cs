@@ -1,7 +1,4 @@
 ﻿using System.Threading.Tasks;
-using AbpTestLocalization.TextTemplating.Localization;
-using Microsoft.Extensions.Localization;
-using Volo.Abp.DependencyInjection;
 using Volo.Abp.TextTemplating;
 
 namespace AbpTestLocalization;
@@ -27,40 +24,6 @@ public class TestLocalizationResourceAppService : AbpTestLocalizationAppService,
     public async Task<string> GetFromProviderAsync()
     {
         string text = await _provider.GetRenderedTextAsync();
-
-        return text;
-    }
-}
-
-public class TestTemplateProvider : ITransientDependency
-{
-    private readonly ITemplateRenderer _renderer;
-
-    public TestTemplateProvider(ITemplateRenderer renderer)
-    {
-        _renderer = renderer;
-    }
-
-    public async Task<string> GetRenderedTextAsync()
-    {
-        string text = await _renderer.RenderAsync("TestTemplate", new { Name = "Emma" });
-
-        return text;
-    }
-}
-
-public class TestClassUsingLocalizedString : ITransientDependency
-{
-    private readonly IStringLocalizer<TemplatesResource> _localizer;
-
-    public TestClassUsingLocalizedString(IStringLocalizer<TemplatesResource> localizer)
-    {
-        _localizer = localizer;
-    }
-
-    public string GetText()
-    {
-        string text = _localizer[TemplatesResource.TestText];
 
         return text;
     }
