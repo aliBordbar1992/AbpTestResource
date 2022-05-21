@@ -1,0 +1,7 @@
+{
+  "culture": "en",
+  "texts": {
+    "WelcomeMessage": "Hello {0}! welcome to this test application!",
+    "TestText": "A test text in another resource defined in some module"
+  }
+}

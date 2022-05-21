@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>AbpTestLocalization</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="TextTemplating\Templates\TestTemplate.tpl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="TextTemplating\Templates\TestTemplate.tpl" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AbpTestLocalization.Domain\AbpTestLocalization.Domain.csproj" />
+    <ProjectReference Include="..\AbpTestLocalization.Application.Contracts\AbpTestLocalization.Application.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Account.Application" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.Identity.Application" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Application" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Application" Version="5.2.2" />
+    <PackageReference Include="Volo.Abp.TextTemplating.Scriban" Version="5.2.2" />
+  </ItemGroup>
+
+</Project>
